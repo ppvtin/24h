@@ -7,7 +7,7 @@
         } else {
             $user = $_POST['txtUser'];
             $hash = md5($_POST['txtPass']);
-            $conn = new mysqli('localhost', 'root', '', '24h');
+            $conn = new mysqli('us-cdbr-east-02.cleardb.com', 'b3f45e08fe46ae', '55c9f49d', 'heroku_6485ee814dc37c2');
             if ($conn->connect_error) {
                 echo "something went wrong!";
             } else {
@@ -17,7 +17,7 @@
                 } else {
                    echo '<script>alert(\'Đăng kí không thành công !\');window.location.href = \'http://localhost:81/24h/user/blog_24h.php\'</script>';
                 }
-            }    
+            }
         }
     }
 ?>

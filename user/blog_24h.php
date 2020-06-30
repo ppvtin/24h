@@ -26,11 +26,11 @@
         </header><!-- /header -->
         <div class="container">
             <div class="banner-header banner-lbook3 space-30">
-                <img src="assets/images/banner-blog.jpg" alt="Banner-header">
+                <img src="assets-user/images/banner-blog.jpg" alt="Banner-header">
                 <div class="text">
-                        <h3>Tin tức 24h</h3>
-                        <p><a href="#" title="Home">Home</a>
-                    </div>
+                    <h3>Tin tức 24h</h3>
+                    <p><a href="#" title="Home">Home</a>
+                </div>
             </div>
         </div>
         <!-- End container -->
