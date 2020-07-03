@@ -23,10 +23,14 @@
     <link href="/24h/assets-admin/build/css/custom.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
-     <?php
-      include("banner.php");
+    <?php
+        session_start();
+        if (!isset($_SESSION['admin']))
+            echo '<script>location.href = \'/24h/loginadmin.html\'</script>';
+        else
+            echo '<form action="logout.php" style="display: none" method="post" id="frmLogout"></form>';
+        include("banner.html");
     ?>
-
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">

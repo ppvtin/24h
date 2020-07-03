@@ -25,7 +25,12 @@
 
 <body class="nav-md">
     <?php
-      include("banner.php");
+        session_start();
+        if (!isset($_SESSION['admin']))
+            echo '<script>location.href = \'/24h/loginadmin.html\'</script>';
+        else
+            echo '<form action="logout.php" style="display: none" method="post" id="frmLogout"></form>';
+        include("banner.html");
     ?>
 
             <!-- page content -->
@@ -40,7 +45,7 @@
                                 <div class="x_title">
                                     <h2>Products list</h2>
                                     <a class="btn btn-primary pull-right" style="color: #E7E7E7;"
-                                        href="/admin/createproduct">Add new product</a>
+                                        href="/24h/createblog.php">Bài viết mới</a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -82,7 +87,7 @@
                                                                 echo '<td>' . $row['title'] . '</td>';
                                                                 echo '<td>' . '<img src="/24h/images/' . $row['id'] .'" width="50px" height="32px" alt="error"></td>';
                                                                 echo '<td>' . substr($row['content'], 0, 50) . '</td>';
-                                                                echo '<td><a href="#">Edit</a> | <a href="' . '/24h/delete.php?id=' . $row['id'] . '"class="btnDelete">Delete</a></td>';
+                                                                echo '<td><a href="' . '/24h/edit.php?id=' . $row['id'] . '">Edit</a> | <a href="' . '/24h/delete.php?id=' . $row['id'] . '"class="btnDelete">Delete</a></td>';
                                                             echo '</tr>';
                                                         }
                                                     } else {

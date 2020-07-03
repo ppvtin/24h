@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="assets/vendor/owl-slider.css"/>
         <link rel="stylesheet" type="text/css" href="assets/vendor/settings.css"/>
         <link rel="shortcut icon" href="assets/images/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,500,700,300' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="assets/js/jquery-3.2.0.min.js"></script>
         <title>Tin Tức 24h</title>
@@ -24,14 +25,8 @@
         </tr>
         <!-- End Banner_Menu-->
         </header><!-- /header -->
-        <div class="container">
-            <div class="banner-header banner-lbook3 space-30">
-                <img src="assets-user/images/banner-blog.jpg" alt="Banner-header">
-                <div class="text">
-                    <h3>Tin tức 24h</h3>
-                    <p><a href="#" title="Home">Home</a>
-                </div>
-            </div>
+        <div class="container" style="margin: 50px 0px;" >
+            <h3 style="text-align: center; font-size: 120px; font-weight: bold; font-family: 'Bangers', cursive;"><a href="blog_24h.php">Tin tức 24H</a></h3>
         </div>
         <!-- End container -->
         <div class="blog-post-container blog-page blog-post-columns-3 center">

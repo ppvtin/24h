@@ -32,7 +32,6 @@
             echo '<form action="logout.php" style="display: none" method="post" id="frmLogout"></form>';
         include("banner.html");
     ?>
-
             <!-- page content -->
             <div class="right_col" role="main" style="min-height: 3940px;">
                 <div class="">
@@ -51,13 +50,33 @@
                                 </div>
                                 <div class="x_content">
                                     <br>
-                                    <form class="form-horizontal form-label-left" action="save.php" method="POST" enctype="multipart/form-data">
+                                    <form class="form-horizontal form-label-left" action="saveedit.php" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="<?php 
+                                            $queries = array();
+                                            parse_str($_SERVER['QUERY_STRING'], $queries);
+                                            echo $queries['id'];
+                                        ?>">
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align">Tiêu đề bài viết
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" required="required" name="title"
-                                                    class="form-control ">
+                                                    class="form-control" value="<?php 
+                                                        $queries = array();
+                                                        parse_str($_SERVER['QUERY_STRING'], $queries);
+                                                        $connect = new mysqli('us-cdbr-east-02.cleardb.com', 'b3f45e08fe46ae', '55c9f49d', 'heroku_6485ee814dc37c2');
+                                                        if (!$connect->connect_error) {
+                                                            $sql = "select title from blog where id = " .$queries['id'];
+                                                        
+                                                            $result = $connect->query($sql);
+                                                            if ($result->num_rows === 1) {
+                                                                $jsonStr = json_encode($result->fetch_assoc());
+                                                                $jsonObj = json_decode($jsonStr);
+                                                                $key = 'title';
+                                                                echo $jsonObj->$key;
+                                                            }
+                                                        }
+                                                    ?>">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -65,7 +84,13 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="file" required="required" name="pic"
-                                                    class="form-control ">
+                                                    class="form-control">
+                                                <img src="<?php 
+                                                    $queries = array();
+                                                    parse_str($_SERVER['QUERY_STRING'], $queries);
+                                                    $id = $queries['id'];
+                                                    echo '/24h/images/' .$id;
+                                                    ?>" width="200px" height="128px" alt="error!">
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -73,13 +98,28 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" name="content"
-                                                    class="form-control ">
+                                                    class="form-control "value="<?php 
+                                                        $queries = array();
+                                                        parse_str($_SERVER['QUERY_STRING'], $queries);
+                                                        $connect = new mysqli('us-cdbr-east-02.cleardb.com', 'b3f45e08fe46ae', '55c9f49d', 'heroku_6485ee814dc37c2');
+                                                        if (!$connect->connect_error) {
+                                                            $sql = "select content from blog where id = " .$queries['id'];
+                                                        
+                                                            $result = $connect->query($sql);
+                                                            if ($result->num_rows === 1) {
+                                                                $jsonStr = json_encode($result->fetch_assoc());
+                                                                $jsonObj = json_decode($jsonStr);
+                                                                $key = 'content';
+                                                                echo $jsonObj->$key;
+                                                            }
+                                                        }
+                                                    ?>">
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
                                         <div class="item form-group">
                                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                                <input type="submit" class="btn btn-primary pull-right" style="cursor: pointer;" value="Save">
+                                                <input type="submit" class="btn btn-primary pull-right" style="cursor: pointer;" value="Update">
                                             </div>
                                         </div>
                                     </form>

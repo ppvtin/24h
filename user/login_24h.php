@@ -13,6 +13,24 @@
         <script type="text/javascript" src="assets/js/jquery-3.2.0.min.js"></script>
         <title>Login</title>
     </head>
+    <?php
+        session_start();
+        $message="";
+        if(count($_POST)>0){
+            $con = mysqli_connect('us-cdbr-east-02.cleardb.com','b3f45e08fe46ae','55c9f49d','heroku_6485ee814dc37c2');
+            $result = mysqli_query($con,"SELECT * FROM user WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
+            $row = mysqli_fetch_array($result);
+            if(is_array($row)){
+                $_SESSION["username"] = $row['username'];
+                $_SESSION["password"] = $row['password'];
+                }else{
+                    $message = "Invalid Username or Password!";
+                    }
+                        }
+            if(isset($_SESSION["username"])){
+                header("Location: index.php");
+            }
+    ?>
     <body>
    <tr>
         <td>
@@ -26,24 +44,14 @@
                 <div class="row">
                     <div class="col-md-6 sign-in space-30">
                         <h3>sign in</h3>
-                        <p>Hello, welcome to your account.</p>
-                        <div class="social space-30 box">
-                            <a class="float-left" href="#" title="facebook">
-                                <i class="fa fa-facebook"></i>
-                                SIGN IN WITH FACEBOOK
-                            </a>
-                            <a class="float-right" href="#" title="TWITTER">
-                                <i class="fa fa-twitter"></i>
-                                SIGN IN WITH TWITTER
-                            </a>
-                        </div>
-                        <!-- End social -->
+                        <p>Hello, welcome to your account.</p>                       
+                        <!-- End social -->                       
                         <form class="form-horizontal" method="POST">
                             <div class="group box space-20">
                                 <label class="control-label" for="inputemail">EMAIL ADDRESS *</label>
-                                <input class="form-control" type="text" placeholder="Your email" id="inputemail">
+                                <input class="form-control" type="text" placeholder="Your email" name="username">
                                 <label class="control-label" for="inputpass">PASSWORD *</label>
-                                <input class="form-control" type="password" placeholder="Password" id="inputpass"> 
+                                <input class="form-control" type="password" placeholder="Password" name="password"> 
                             </div>
                             <div class="remember">
                                 <input id="remeber" type="checkbox" name="check" value="remeber">

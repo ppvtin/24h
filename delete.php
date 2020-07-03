@@ -8,8 +8,7 @@
     	$sql = "delete from blog where id = " .$queries['id'];
     	if ($connect->query($sql) === TRUE)
         	echo '<script>alert(\'Đã xóa thành công!\');window.location.href = \'http://localhost:81/24h/allblog.php\'</script>';
-        else 
+        else
         	echo '<script>alert(\'Xóa bài viết không thành công!\');window.location.href = \'http://localhost:81/24h/allblog.php\'</script>';
-
     }
 ?>
