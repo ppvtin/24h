@@ -7668,10 +7668,9 @@ ul.tabs.tabs-title li span.count {
 }
 
 .blog-classic #primary.col-md-9 {
-  float: left;
   padding-left: 0px;
   padding-right: 15px;
-  width: 66.66667%;
+  width: 100%;
 }
 
 .blog-classic #secondary.col-md-3 {
